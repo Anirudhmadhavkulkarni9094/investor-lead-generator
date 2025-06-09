@@ -462,11 +462,11 @@ export default function Home() {
           Submit your startup details and download 100 free investor leads
           instantly.
         </p>
-        <Link href="/form">
+        <div onClick={() => setShowModal(true)} className="inline-block">
           <button className="bg-black hover:bg-gray-900 text-white py-3 px-6 rounded-lg">
             Get Started Now
           </button>
-        </Link>
+        </div>
       </motion.section>
     </div>
   );
