@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function Home() {
   const FormGroup = ({ title, options }: { title: string; options: string[] }) => {
@@ -29,6 +29,23 @@ export default function Home() {
 
 
   const [showModal, setShowModal] = useState(false);
+  const nicheSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollToNiches = () => {
+    if (nicheSectionRef.current) {
+      nicheSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const investorTypes = [
+  { label: "Angel Investors", icon: "🧑‍💼" },
+  { label: "Family Offices", icon: "🏠" },
+  { label: "Corporate Venture Arms", icon: "🏢" },
+  { label: "Accelerators & Incubators", icon: "🚀" },
+  { label: "Private Equity Firms", icon: "💼" },
+  { label: "Venture Capital Firms", icon: "📈" },
+  { label: "M&A-Focused Buyers", icon: "🤝" },
+  { label: "Syndicates & Investment Clubs", icon: "👥" },
+];
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
@@ -54,7 +71,11 @@ export default function Home() {
               Get 100 Free Investor Leads
             </button>
           </div>
-          <button className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-lg">
+          <button
+            className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-lg"
+            onClick={handleScrollToNiches}
+            type="button"
+          >
             View Investor Niches
           </button>
         </div>
@@ -225,6 +246,30 @@ export default function Home() {
           <img src="/logos/googlevc.svg" className="h-8" alt="GV" />
         </div>
       </motion.section>
+
+
+ <section className="px-6 sm:px-12 py-16 bg-gray-50" ref={nicheSectionRef}>
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-black">
+        Featured Investor Types
+      </h2>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {investorTypes.map((item, idx) => (
+          <motion.div
+            key={idx}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            onClick={()=>{setShowModal(true)}}
+            className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all"
+          >
+            <div className="text-3xl mb-3">{item.icon}</div>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+              {item.label}
+            </h3>
+          </motion.div>
+        ))}
+      </div>
+    </section>
 
       {/* How it Works */}
       <motion.section
