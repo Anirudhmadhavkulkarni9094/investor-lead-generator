@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
+import { ArrowRight, Search } from 'lucide-react';
 
 export default function Home() {
   const FormGroup = ({ title, options }: { title: string; options: string[] }) => {
@@ -49,37 +50,79 @@ export default function Home() {
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen px-8 py-24 flex flex-col justify-center items-center text-center"
-      >
-        <h1 className="text-4xl sm:text-5xl font-bold max-w-3xl">
-          Discover and connect with 100,000+ niche startup investors
-        </h1>
-        <p className="text-lg mt-4 max-w-xl">
-          Get curated investor leads based on your startup’s stage, niche, and
-          region.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-6">
-          <div>
-            <button
-              onClick={() => setShowModal(true)}
-              className="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg"
-            >
-              Get 100 Free Investor Leads
-            </button>
-          </div>
+       <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] text-white relative overflow-hidden"
+    >
+      {/* Decorative blurred shapes */}
+      <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl z-0"></div>
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-300/20 rounded-full blur-2xl z-0"></div>
+
+      {/* Huge App Name in Background */}
+      <h1 className="absolute text-[20vw] sm:text-[14vw] font-extrabold text-white/20 tracking-tight z-0 select-none pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        InvestorLink
+      </h1>
+
+      {/* Glass Card */}
+      <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-3xl px-8 py-16 max-w-3xl text-center w-full">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-md"
+        >
+          ✨ Connect with <span className="text-cyan-300">100,000+</span> Elite Startup Investors
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-lg mt-6 text-blue-100 max-w-xl mx-auto"
+        >
+          Get handpicked investor leads based on your startup’s stage, niche, and region — instantly.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 mt-10 justify-center"
+        >
           <button
-            className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-lg"
+            onClick={() => setShowModal(true)}
+            className="relative bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-400 hover:to-cyan-500 text-white py-3 px-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          >
+            <span className="z-10">Get 100 Free Investor Leads</span>
+            <ArrowRight size={18} className="z-10" />
+            <div className="absolute inset-0 bg-white/10 rounded-xl blur-sm opacity-50 hover:opacity-30 transition-all duration-300"></div>
+          </button>
+
+          <button
             onClick={handleScrollToNiches}
             type="button"
+            className="relative bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 px-6 rounded-xl shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
-            View Investor Niches
+            <Search size={18} /> View Investor Niches
           </button>
-        </div>
-      </motion.section>
+        </motion.div>
+
+        {/* Testimonials */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="mt-12 text-sm sm:text-base text-blue-100"
+        >
+          <div className="bg-white/10 border border-white/10 rounded-xl px-6 py-4 backdrop-blur-md shadow-inner">
+            <p>💬 “Landed 2 pre-seed meetings in 48 hours!” – <span className="font-medium text-white">AI Startup Founder</span></p>
+            <p className="mt-2">💡 “Finally, quality investors without cold emailing.” – <span className="font-medium text-white">Early SaaS Team</span></p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.section>
       <AnimatePresence>
         {showModal && (
           <motion.div
