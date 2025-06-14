@@ -7,6 +7,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -28,6 +32,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+                <ToastContainer position="top-right" autoClose={3000} />
+
       </body>
     </html>
   );

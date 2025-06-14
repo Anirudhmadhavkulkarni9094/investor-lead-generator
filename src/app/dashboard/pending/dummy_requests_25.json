@@ -1,0 +1,752 @@
+[
+  {
+    "id": "1",
+    "name": "Jamie Price",
+    "email": "simmonsjasmine@hotmail.com",
+    "phone": "846.258.5435x54445",
+    "status": "pending",
+    "submittedAt": "2025-06-09T00:00:00Z",
+    "investorType": [
+      "Syndicates & Investment Clubs"
+    ],
+    "geography": [
+      "Canada & LatAm Investors",
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "AI & Deep Tech Investors",
+      "HealthTech & MedTech Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)",
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Institution wrong continue take ready."
+  },
+  {
+    "id": "2",
+    "name": "Edward Smith",
+    "email": "briggsian@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-05T00:00:00Z",
+    "investorType": [
+      "Accelerators & Incubators",
+      "Corporate Venture Arms"
+    ],
+    "geography": [
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "Web3 / Crypto-Focused Investors",
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Series A / B Investors",
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)",
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Active Investors"
+    ],
+    "additionalMessage": "Serious analysis blood food strategy hair task."
+  },
+  {
+    "id": "3",
+    "name": "Tristan Stephens",
+    "email": "michaeldean@hotmail.com",
+    "phone": "(448)600-5238",
+    "status": "pending",
+    "submittedAt": "2025-06-12T00:00:00Z",
+    "investorType": [
+      "Corporate Venture Arms",
+      "Angel Investors"
+    ],
+    "geography": [
+      "Canada & LatAm Investors",
+      "US-Based Investors"
+    ],
+    "industry": [
+      "SaaS Investors",
+      "Web3 / Crypto-Focused Investors"
+    ],
+    "stage": [
+      "Pre-Seed & Seed Investors"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Active Investors"
+    ],
+    "additionalMessage": "Mean country involve area man even."
+  },
+  {
+    "id": "4",
+    "name": "Amy Brown",
+    "email": "plang@gmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-08T00:00:00Z",
+    "investorType": [
+      "Angel Investors"
+    ],
+    "geography": [
+      "Europe-Based Investors",
+      "Asia-Pacific Investors"
+    ],
+    "industry": [
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Enter big painting candidate peace seven though."
+  },
+  {
+    "id": "5",
+    "name": "Matthew Snyder",
+    "email": "gcalhoun@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-03T00:00:00Z",
+    "investorType": [
+      "Accelerators & Incubators",
+      "Family Offices"
+    ],
+    "geography": [
+      "US-Based Investors",
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "Fintech Investors",
+      "SaaS Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Analysis order language sit none agreement."
+  },
+  {
+    "id": "6",
+    "name": "Michelle Meadows",
+    "email": "robert85@gmail.com",
+    "phone": "001-925-957-9897x6614",
+    "status": "pending",
+    "submittedAt": "2025-06-10T00:00:00Z",
+    "investorType": [
+      "Corporate Venture Arms",
+      "Private Equity Firms"
+    ],
+    "geography": [
+      "Africa-Focused Investors",
+      "Canada & LatAm Investors"
+    ],
+    "industry": [
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors",
+      "Growth Stage (Series C+)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)",
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Passive Investors"
+    ],
+    "additionalMessage": "Hour its who way three."
+  },
+  {
+    "id": "7",
+    "name": "Anthony Chandler",
+    "email": "brandon01@yahoo.com",
+    "phone": "669-437-9236",
+    "status": "pending",
+    "submittedAt": "2025-06-12T00:00:00Z",
+    "investorType": [
+      "Family Offices",
+      "Syndicates & Investment Clubs"
+    ],
+    "geography": [
+      "Canada & LatAm Investors",
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "Real Estate Investors"
+    ],
+    "stage": [
+      "Revenue-Based Investors"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)",
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Passive Investors",
+      "Active Investors"
+    ],
+    "additionalMessage": "Return group may again color can politics."
+  },
+  {
+    "id": "8",
+    "name": "Christopher Carr",
+    "email": "veronica48@yahoo.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-01T00:00:00Z",
+    "investorType": [
+      "Accelerators & Incubators"
+    ],
+    "geography": [
+      "Canada & LatAm Investors",
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "Consumer & DTC Investors",
+      "Manufacturing / Industrial Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)",
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Even open performance prevent arrive."
+  },
+  {
+    "id": "9",
+    "name": "Crystal Anderson",
+    "email": "jennifer63@gmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-04T00:00:00Z",
+    "investorType": [
+      "Corporate Venture Arms"
+    ],
+    "geography": [
+      "Africa-Focused Investors",
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "Web3 / Crypto-Focused Investors",
+      "SaaS Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors",
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)",
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Passive Investors",
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Through magazine approach three."
+  },
+  {
+    "id": "10",
+    "name": "Holly Ibarra DDS",
+    "email": "vherrera@brown.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-03T00:00:00Z",
+    "investorType": [
+      "Family Offices"
+    ],
+    "geography": [
+      "Middle East Investors",
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "HealthTech & MedTech Investors",
+      "Manufacturing / Industrial Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Active Investors",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Medical hospital these kind ever can machine."
+  },
+  {
+    "id": "11",
+    "name": "John Henderson",
+    "email": "timothy21@walter.info",
+    "phone": "+1-610-037-3875",
+    "status": "pending",
+    "submittedAt": "2025-06-11T00:00:00Z",
+    "investorType": [
+      "Family Offices",
+      "Syndicates & Investment Clubs"
+    ],
+    "geography": [
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "Fintech Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)",
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Active Investors"
+    ],
+    "additionalMessage": "Current organization positive degree."
+  },
+  {
+    "id": "12",
+    "name": "Andrea Garcia",
+    "email": "mollyball@hotmail.com",
+    "phone": "001-817-260-1196x9561",
+    "status": "pending",
+    "submittedAt": "2025-06-03T00:00:00Z",
+    "investorType": [
+      "Venture Capital Firms",
+      "Private Equity Firms"
+    ],
+    "geography": [
+      "Africa-Focused Investors",
+      "US-Based Investors"
+    ],
+    "industry": [
+      "GreenTech / Climate Investors",
+      "Real Estate Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors",
+      "Growth Stage (Series C+)"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Fire worry thousand moment great run pretty."
+  },
+  {
+    "id": "13",
+    "name": "Tony Coleman",
+    "email": "jameswolfe@hatfield.com",
+    "phone": "4111834071",
+    "status": "pending",
+    "submittedAt": "2025-06-01T00:00:00Z",
+    "investorType": [
+      "Family Offices",
+      "Syndicates & Investment Clubs"
+    ],
+    "geography": [
+      "US-Based Investors",
+      "Asia-Pacific Investors"
+    ],
+    "industry": [
+      "Real Estate Investors",
+      "SaaS Investors"
+    ],
+    "stage": [
+      "Growth Stage (Series C+)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)",
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Active Investors"
+    ],
+    "additionalMessage": "And study risk pick manager."
+  },
+  {
+    "id": "14",
+    "name": "Craig Rodriguez",
+    "email": "desireemueller@hotmail.com",
+    "phone": "574.947.2538x74168",
+    "status": "pending",
+    "submittedAt": "2025-06-07T00:00:00Z",
+    "investorType": [
+      "Venture Capital Firms",
+      "Private Equity Firms"
+    ],
+    "geography": [
+      "US-Based Investors"
+    ],
+    "industry": [
+      "Real Estate Investors"
+    ],
+    "stage": [
+      "Revenue-Based Investors",
+      "Growth Stage (Series C+)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Active Investors",
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Any lay enjoy collection."
+  },
+  {
+    "id": "15",
+    "name": "Yolanda Kennedy",
+    "email": "michaelsanchez@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-11T00:00:00Z",
+    "investorType": [
+      "Venture Capital Firms"
+    ],
+    "geography": [
+      "Canada & LatAm Investors"
+    ],
+    "industry": [
+      "AI & Deep Tech Investors",
+      "Web3 / Crypto-Focused Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Passive Investors"
+    ],
+    "additionalMessage": "Both community attack teach."
+  },
+  {
+    "id": "16",
+    "name": "Chad Lowery",
+    "email": "iday@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-11T00:00:00Z",
+    "investorType": [
+      "Accelerators & Incubators"
+    ],
+    "geography": [
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Active Investors"
+    ],
+    "additionalMessage": "Physical set whatever power team memory TV."
+  },
+  {
+    "id": "17",
+    "name": "Dr. Travis Alexander MD",
+    "email": "martha88@hotmail.com",
+    "phone": "848.683.1408x1730",
+    "status": "pending",
+    "submittedAt": "2025-06-01T00:00:00Z",
+    "investorType": [
+      "Private Equity Firms"
+    ],
+    "geography": [
+      "US-Based Investors",
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "GreenTech / Climate Investors",
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Series A / B Investors"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Passive Investors"
+    ],
+    "additionalMessage": "Determine there apply hotel represent toward purpose."
+  },
+  {
+    "id": "18",
+    "name": "Jennifer Delacruz",
+    "email": "timothy33@yahoo.com",
+    "phone": "+1-512-984-1993x8125",
+    "status": "pending",
+    "submittedAt": "2025-06-06T00:00:00Z",
+    "investorType": [
+      "Venture Capital Firms",
+      "Corporate Venture Arms"
+    ],
+    "geography": [
+      "US-Based Investors"
+    ],
+    "industry": [
+      "AI & Deep Tech Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)",
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Passive Investors"
+    ],
+    "additionalMessage": "Why build hope."
+  },
+  {
+    "id": "19",
+    "name": "Rebecca Saunders",
+    "email": "paul33@jones.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-02T00:00:00Z",
+    "investorType": [
+      "Syndicates & Investment Clubs"
+    ],
+    "geography": [
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "SaaS Investors"
+    ],
+    "stage": [
+      "Buyout / Acquisition Focused Investors",
+      "Revenue-Based Investors"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Active Investors"
+    ],
+    "additionalMessage": "Cell over common war new."
+  },
+  {
+    "id": "20",
+    "name": "Mr. Kevin Rollins",
+    "email": "xnichols@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-13T00:00:00Z",
+    "investorType": [
+      "Syndicates & Investment Clubs",
+      "Family Offices"
+    ],
+    "geography": [
+      "Middle East Investors"
+    ],
+    "industry": [
+      "SaaS Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)",
+      "Growth Stage (Series C+)"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)",
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Passive Investors"
+    ],
+    "additionalMessage": "Practice American security."
+  },
+  {
+    "id": "21",
+    "name": "Michael Hayes",
+    "email": "lindawhite@yahoo.com",
+    "phone": "(961)295-6320",
+    "status": "pending",
+    "submittedAt": "2025-06-07T00:00:00Z",
+    "investorType": [
+      "Family Offices"
+    ],
+    "geography": [
+      "Europe-Based Investors",
+      "Canada & LatAm Investors"
+    ],
+    "industry": [
+      "Web3 / Crypto-Focused Investors"
+    ],
+    "stage": [
+      "Pre-Seed & Seed Investors"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Active Investors",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Mention chair budget him necessary ahead."
+  },
+  {
+    "id": "22",
+    "name": "Charles Myers",
+    "email": "zporter@newton.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-10T00:00:00Z",
+    "investorType": [
+      "Syndicates & Investment Clubs",
+      "Venture Capital Firms"
+    ],
+    "geography": [
+      "US-Based Investors",
+      "Africa-Focused Investors"
+    ],
+    "industry": [
+      "Manufacturing / Industrial Investors",
+      "Consumer & DTC Investors"
+    ],
+    "stage": [
+      "Revenue-Based Investors",
+      "Pre-Seed & Seed Investors"
+    ],
+    "investmentSize": [
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Active Investors"
+    ],
+    "additionalMessage": "Approach tend my human authority deep keep hair."
+  },
+  {
+    "id": "23",
+    "name": "William Solis",
+    "email": "larsondanny@tran.com",
+    "phone": "(856)590-2204",
+    "status": "pending",
+    "submittedAt": "2025-06-13T00:00:00Z",
+    "investorType": [
+      "Syndicates & Investment Clubs",
+      "Venture Capital Firms"
+    ],
+    "geography": [
+      "US-Based Investors"
+    ],
+    "industry": [
+      "SaaS Investors",
+      "Web3 / Crypto-Focused Investors"
+    ],
+    "stage": [
+      "Pre-Seed & Seed Investors"
+    ],
+    "investmentSize": [
+      "Small Investments (<$1M)",
+      "Large Investments (>$10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)"
+    ],
+    "additionalMessage": "Magazine billion loss challenge movie agreement need half."
+  },
+  {
+    "id": "24",
+    "name": "James George",
+    "email": "oharris@hotmail.com",
+    "phone": "",
+    "status": "pending",
+    "submittedAt": "2025-06-08T00:00:00Z",
+    "investorType": [
+      "Corporate Venture Arms"
+    ],
+    "geography": [
+      "Europe-Based Investors",
+      "Asia-Pacific Investors"
+    ],
+    "industry": [
+      "Fintech Investors"
+    ],
+    "stage": [
+      "Pre-Seed & Seed Investors",
+      "Series A / B Investors"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Inactive Investors (Retired/Not Currently Investing)",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Cost involve when."
+  },
+  {
+    "id": "25",
+    "name": "Jennifer Mccoy",
+    "email": "hthompson@harrington.biz",
+    "phone": "574-169-6436x25004",
+    "status": "pending",
+    "submittedAt": "2025-06-06T00:00:00Z",
+    "investorType": [
+      "Private Equity Firms",
+      "Corporate Venture Arms"
+    ],
+    "geography": [
+      "Europe-Based Investors"
+    ],
+    "industry": [
+      "Web3 / Crypto-Focused Investors"
+    ],
+    "stage": [
+      "Strategic Investors (e.g., Corporates)"
+    ],
+    "investmentSize": [
+      "Medium Investments ($1M - $10M)"
+    ],
+    "statusFilters": [
+      "Active Investors",
+      "Passive Investors"
+    ],
+    "additionalMessage": "Site bag have."
+  }
+]

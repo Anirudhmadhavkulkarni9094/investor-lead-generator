@@ -1,36 +1,134 @@
 "use client";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
-import { ArrowRight, Search } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import { ArrowRight, Search } from "lucide-react";
+import { toast } from "react-toastify";
 
-export default function Home() {
-  const FormGroup = ({ title, options }: { title: string; options: string[] }) => {
-  return (
-    <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
-      <p className="font-semibold text-gray-800 mb-3 text-sm sm:text-base">{title}</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-        {options.map((opt) => (
-          <label
-            key={opt}
-            className="flex items-center gap-2 px-2 py-1 bg-white border rounded hover:bg-orange-50 transition-colors"
-          >
-            <input
-              type="checkbox"
-              value={opt}
-              className="accent-orange-500 w-4 h-4"
-            />
-            <span className="text-gray-700">{opt}</span>
-          </label>
-        ))}
-      </div>
-    </div>
-  );
+type FormGroupProps = {
+  title: string;
+  options: string[];
+  selected: string[];
+  onChange: (option: string) => void;
 };
 
+export default function Home() {
+  function FormGroup({ title, options, selected, onChange }: FormGroupProps) {
+    return (
+      <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+        <p className="font-semibold text-gray-800 mb-3 text-sm sm:text-base">
+          {title}
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          {options.map((opt) => (
+            <label
+              key={opt}
+              className="flex items-center gap-2 px-2 py-1 bg-white border rounded hover:bg-orange-50 transition-colors"
+            >
+              <input
+                type="checkbox"
+                checked={selected.includes(opt)}
+                onChange={() => onChange(opt)}
+                className="accent-orange-500 w-4 h-4"
+              />
+              <span className="text-gray-700">{opt}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   const [showModal, setShowModal] = useState(false);
   const nicheSectionRef = useRef<HTMLDivElement>(null);
+
+  const [name, setName] = useState("anirudh");
+  const [email, setEmail] = useState("anirudh@gmail.com");
+  const [phone, setPhone] = useState("");
+
+  // State for each filter group
+  const [investorType, setInvestorType] = useState<string[]>(["anirudh,anirudh"]);
+  const [geography, setGeography] = useState<string[]>(["anirudh,anirudh"]);
+  const [industry, setIndustry] = useState<string[]>(["anirudh,anirudh"]);
+  const [stage, setStage] = useState<string[]>(["anirudh,anirudh"]);
+  const [investmentSize, setInvestmentSize] = useState<string[]>(["anirudh,anirudh"]);
+  const [status, setStatus] = useState<string[]>(["anirudh,anirudh"]);
+  const [additionalInfo, setAdditionalDetails] = useState("Anirudh");
+
+
+  const toggle =
+    (
+      setter: React.Dispatch<React.SetStateAction<string[]>>,
+      current: string[]
+    ) =>
+    (option: string) => {
+      setter(
+        current.includes(option)
+          ? current.filter((o) => o !== option)
+          : [...current, option]
+      );
+    };
+
+  useEffect(() => {
+    fetch("/api/track/page", { method: "POST" }).catch((err) =>
+      console.warn("Page view tracking failed:", err)
+    );
+  }, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Fire-and-forget tracking (no await, no blocking)
+    fetch("/api/track/button").catch((err) =>
+      console.warn("Tracking failed:", err)
+    );
+
+    const formData = {
+      name,
+      email,
+      phone,
+      investorType,
+      geography,
+      industry,
+      stage,
+      investmentSize,
+      status,
+      additionalInfo
+    };
+
+    console.log("Submitting lead:", formData);
+    // Basic validation
+
+    try {
+      const res = await fetch("/api/investor-leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        toast.success("Lead submitted successfully!");
+        setEmail("");
+        setName("");
+        setPhone("");
+        setInvestorType([]);
+        setGeography([]);
+        setIndustry([]);
+        setStage([]);
+        setInvestmentSize([]);
+        setStatus([]);
+        setShowModal(false);
+      } else {
+        toast.error(
+          result.error || "Lead submission failed. Please try again later."
+        );
+      }
+    } catch (err) {
+      toast.error("Lead submission failed. Please try again later.");
+    }
+  };
 
   const handleScrollToNiches = () => {
     if (nicheSectionRef.current) {
@@ -38,91 +136,124 @@ export default function Home() {
     }
   };
   const investorTypes = [
-  { label: "Angel Investors", icon: "🧑‍💼" },
-  { label: "Family Offices", icon: "🏠" },
-  { label: "Corporate Venture Arms", icon: "🏢" },
-  { label: "Accelerators & Incubators", icon: "🚀" },
-  { label: "Private Equity Firms", icon: "💼" },
-  { label: "Venture Capital Firms", icon: "📈" },
-  { label: "M&A-Focused Buyers", icon: "🤝" },
-  { label: "Syndicates & Investment Clubs", icon: "👥" },
-];
+    { label: "Angel Investors", icon: "🧑‍💼" },
+    { label: "Family Offices", icon: "🏠" },
+    { label: "Corporate Venture Arms", icon: "🏢" },
+    { label: "Accelerators & Incubators", icon: "🚀" },
+    { label: "Private Equity Firms", icon: "💼" },
+    { label: "Venture Capital Firms", icon: "📈" },
+    { label: "M&A-Focused Buyers", icon: "🤝" },
+    { label: "Syndicates & Investment Clubs", icon: "👥" },
+  ];
+  const bouncingCircles = Array.from({ length: 6 }).map((_, i) => {
+    const top = Math.random() * 80 + 10; // 10%–90%
+    const left = Math.random() * 80 + 10; // 10%–90%
+    const size = Math.random() * 40 + 40; // 40px–80px
+    const delay = Math.random() * 2; // 0s–2s delay
+
+    return (
+      <div
+        key={i}
+        className="absolute bg-white rounded-full animate-bounce z-0"
+        style={{
+          top: `${top}%`,
+          left: `${left}%`,
+          width: `${size}px`,
+          height: `${size}px`,
+          animationDelay: `${delay}s`,
+          opacity: 0.1,
+          mixBlendMode: "overlay",
+        }}
+      />
+    );
+  });
+
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-       <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] text-white relative overflow-hidden"
-    >
-      {/* Decorative blurred shapes */}
-      <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl z-0"></div>
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-300/20 rounded-full blur-2xl z-0"></div>
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] text-white relative overflow-hidden"
+      >
+        {/* Decorative blurred shapes */}
+        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl z-0"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-300/20 rounded-full blur-2xl z-0"></div>
 
-      {/* Huge App Name in Background */}
-      <h1 className="absolute text-[20vw] sm:text-[14vw] font-extrabold text-white/20 tracking-tight z-0 select-none pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        InvestorLink
-      </h1>
+        <div className="absolute top-20 left-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+        <div className="absolute top-20 right-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+        <div className="absolute bottom-20 left-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+        <div className="absolute bottom-20 right-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
 
-      {/* Glass Card */}
-      <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-3xl px-8 py-16 max-w-3xl text-center w-full">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-md"
-        >
-          ✨ Connect with <span className="text-cyan-300">100,000+</span> Elite Startup Investors
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-lg mt-6 text-blue-100 max-w-xl mx-auto"
-        >
-          Get handpicked investor leads based on your startup’s stage, niche, and region — instantly.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 mt-10 justify-center"
-        >
-          <button
-            onClick={() => setShowModal(true)}
-            className="relative bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-400 hover:to-cyan-500 text-white py-3 px-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+        {/* Glass Card */}
+        <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-3xl px-8 py-16 max-w-3xl text-center w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-md"
           >
-            <span className="z-10">Get 100 Free Investor Leads</span>
-            <ArrowRight size={18} className="z-10" />
-            <div className="absolute inset-0 bg-white/10 rounded-xl blur-sm opacity-50 hover:opacity-30 transition-all duration-300"></div>
-          </button>
+            ✨ Connect with <span className="text-cyan-300">100,000+</span>{" "}
+            Elite Startup Investors
+          </motion.h1>
 
-          <button
-            onClick={handleScrollToNiches}
-            type="button"
-            className="relative bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 px-6 rounded-xl shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg mt-6 text-blue-100 max-w-xl mx-auto"
           >
-            <Search size={18} /> View Investor Niches
-          </button>
-        </motion.div>
+            Get handpicked investor leads based on your startup’s stage, niche,
+            and region — instantly.
+          </motion.p>
 
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-12 text-sm sm:text-base text-blue-100"
-        >
-          <div className="bg-white/10 border border-white/10 rounded-xl px-6 py-4 backdrop-blur-md shadow-inner">
-            <p>💬 “Landed 2 pre-seed meetings in 48 hours!” – <span className="font-medium text-white">AI Startup Founder</span></p>
-            <p className="mt-2">💡 “Finally, quality investors without cold emailing.” – <span className="font-medium text-white">Early SaaS Team</span></p>
-          </div>
-        </motion.div>
-      </div>
-    </motion.section>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 mt-10 justify-center"
+          >
+            <button
+              onClick={() => setShowModal(true)}
+              className="relative bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-400 hover:to-cyan-500 text-white py-3 px-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            >
+              <span className="z-10">Get Your curated investor leads</span>
+              <ArrowRight size={18} className="z-10" />
+              <div className="absolute inset-0 bg-white/10 rounded-xl blur-sm opacity-50 hover:opacity-30 transition-all duration-300"></div>
+            </button>
+
+            <button
+              onClick={handleScrollToNiches}
+              type="button"
+              className="relative bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 px-6 rounded-xl shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            >
+              <Search size={18} /> View Investor Niches
+            </button>
+          </motion.div>
+
+          {/* Testimonials */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="mt-12 text-sm sm:text-base text-blue-100"
+          >
+            <div className="bg-white/10 border border-white/10 rounded-xl px-6 py-4 backdrop-blur-md shadow-inner">
+              <p>
+                💬 “Landed 2 pre-seed meetings in 48 hours!” –{" "}
+                <span className="font-medium text-white">
+                  AI Startup Founder
+                </span>
+              </p>
+              <p className="mt-2">
+                💡 “Finally, quality investors without cold emailing.” –{" "}
+                <span className="font-medium text-white">Early SaaS Team</span>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -131,188 +262,188 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-          <motion.div
-            className="bg-white text-black max-w-3xl w-full rounded-2xl p-6 overflow-y-auto max-h-[90vh] relative shadow-2xl border border-gray-200"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-orange-500 bg-gray-100 hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center text-2xl transition-colors duration-200 shadow-md border border-gray-200"
-              onClick={() => setShowModal(false)}
-              aria-label="Close modal"
+            <motion.div
+              className="bg-white text-black max-w-3xl w-full rounded-2xl p-6 overflow-y-auto max-h-[90vh] relative shadow-2xl border border-gray-200"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              ✕
-            </button>
-
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
-              Get Your Curated Investor List
-            </h2>
-
-            <form className="space-y-4 overflow-y-auto text-left p-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
-                  required
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone (Optional)"
-                  className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
-                />
-              </div>
-
-              <div className="my-4 border-t border-gray-200" />
-
-              {/* Grouped Filters */}
-              <div className="space-y-6 mt-4 max-h-[50vh] overflow-y-auto pr-2">
-                {/* Investor Type */}
-                <FormGroup
-                  title="🔹 By Investor Type"
-                  options={[
-                    "Angel Investors",
-                    "Family Offices",
-                    "Corporate Venture Arms",
-                    "Accelerators & Incubators",
-                    "Private Equity Firms",
-                    "Venture Capital Firms",
-                    "M&A-Focused Buyers",
-                    "Syndicates & Investment Clubs",
-                  ]}
-                />
-
-                {/* Geography */}
-                <FormGroup
-                  title="🌍 By Geography"
-                  options={[
-                    "US-Based Investors",
-                    "Europe-Based Investors",
-                    "Middle East Investors",
-                    "Asia-Pacific Investors",
-                    "Canada & LatAm Investors",
-                    "Africa-Focused Investors",
-                    "Global Cross-Border Funds",
-                  ]}
-                />
-
-                {/* Industry */}
-                <FormGroup
-                  title="💼 By Industry Focus"
-                  options={[
-                    "SaaS Investors",
-                    "Fintech Investors",
-                    "HealthTech & MedTech Investors",
-                    "Consumer & DTC Investors",
-                    "AI & Deep Tech Investors",
-                    "Real Estate Investors",
-                    "GreenTech / Climate Investors",
-                    "Web3 / Crypto-Focused Investors",
-                    "Manufacturing / Industrial Investors",
-                  ]}
-                />
-
-                {/* Stage */}
-                <FormGroup
-                  title="📊 By Stage & Focus"
-                  options={[
-                    "Pre-Seed & Seed Investors",
-                    "Series A / B Investors",
-                    "Growth Stage (Series C+)",
-                    "Revenue-Based Investors",
-                    "Buyout / Acquisition Focused Investors",
-                    "Strategic Investors (e.g., Corporates)",
-                  ]}
-                />
-
-                {/* Investment Size */}
-                <FormGroup
-                  title="💰 By Investment Size"
-                  options={[
-                    "Small Investments (<$1M)",
-                    "Medium Investments ($1M - $10M)",
-                    "Large Investments (>$10M)",
-                  ]}
-                />
-
-                {/* Status */}
-                <FormGroup
-                  title="🟢 By Investor Status"
-                  options={[
-                    "Active Investors",
-                    "Passive Investors",
-                    "Inactive Investors (Retired/Not Currently Investing)",
-                  ]}
-                />
-              </div>
-
               <button
-                type="submit"
-                className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 rounded-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all duration-150 shadow-lg text-lg tracking-wide active:scale-95"
+                className="absolute top-3 right-3 text-gray-400 hover:text-orange-500 bg-gray-100 hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center text-2xl transition-colors duration-200 shadow-md border border-gray-200"
+                onClick={() => setShowModal(false)}
+                aria-label="Close modal"
               >
-                Get My Investor Leads
+                ✕
               </button>
-            </form>
-          </motion.div>
+
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">
+                Get Your Curated Investor List
+              </h2>
+
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 overflow-y-auto text-left p-4"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone (Optional)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
+                  />
+                </div>
+
+                <div className="my-4 border-t border-gray-200" />
+
+                <div className="space-y-6 mt-4 max-h-[50vh] overflow-y-auto pr-2">
+                  <FormGroup
+                    title="🔹 By Investor Type"
+                    options={[
+                      "Angel Investors",
+                      "Family Offices",
+                      "Corporate Venture Arms",
+                      "Accelerators & Incubators",
+                      "Private Equity Firms",
+                      "Venture Capital Firms",
+                      "M&A-Focused Buyers",
+                      "Syndicates & Investment Clubs",
+                    ]}
+                    selected={investorType}
+                    onChange={toggle(setInvestorType, investorType)}
+                  />
+
+                  <FormGroup
+                    title="🌍 By Geography"
+                    options={[
+                      "US-Based Investors",
+                      "Europe-Based Investors",
+                      "Middle East Investors",
+                      "Asia-Pacific Investors",
+                      "Canada & LatAm Investors",
+                      "Africa-Focused Investors",
+                      "Global Cross-Border Funds",
+                    ]}
+                    selected={geography}
+                    onChange={toggle(setGeography, geography)}
+                  />
+
+                  <FormGroup
+                    title="💼 By Industry Focus"
+                    options={[
+                      "SaaS Investors",
+                      "Fintech Investors",
+                      "HealthTech & MedTech Investors",
+                      "Consumer & DTC Investors",
+                      "AI & Deep Tech Investors",
+                      "Real Estate Investors",
+                      "GreenTech / Climate Investors",
+                      "Web3 / Crypto-Focused Investors",
+                      "Manufacturing / Industrial Investors",
+                    ]}
+                    selected={industry}
+                    onChange={toggle(setIndustry, industry)}
+                  />
+
+                  <FormGroup
+                    title="📊 By Stage & Focus"
+                    options={[
+                      "Pre-Seed & Seed Investors",
+                      "Series A / B Investors",
+                      "Growth Stage (Series C+)",
+                      "Revenue-Based Investors",
+                      "Buyout / Acquisition Focused Investors",
+                      "Strategic Investors (e.g., Corporates)",
+                    ]}
+                    selected={stage}
+                    onChange={toggle(setStage, stage)}
+                  />
+
+                  <FormGroup
+                    title="💰 By Investment Size"
+                    options={[
+                      "Small Investments (<$1M)",
+                      "Medium Investments ($1M - $10M)",
+                      "Large Investments (>$10M)",
+                    ]}
+                    selected={investmentSize}
+                    onChange={toggle(setInvestmentSize, investmentSize)}
+                  />
+
+                  <FormGroup
+                    title="🟢 By Investor Status"
+                    options={[
+                      "Active Investors",
+                      "Passive Investors",
+                      "Inactive Investors (Retired/Not Currently Investing)",
+                    ]}
+                    selected={status}
+                    onChange={toggle(setStatus, status)}
+                  />
+                  <div className="space-y-2 p-5">
+
+                  <textarea
+                    value={additionalInfo}
+                    onChange={(e) => setAdditionalDetails(e.target.value)}
+                    placeholder="Additional details"
+                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-150"
+                    ></textarea>
+                    </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 rounded-lg hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 focus:outline-none transition-all duration-150 shadow-lg text-lg tracking-wide active:scale-95"
+                >
+                  Get My Investor Leads
+                </button>
+              </form>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Trusted Logos */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="bg-white text-black py-10 px-6"
-      >
-        <p className="text-center font-medium mb-6">
-          Our data is trusted by teams at:
-        </p>
-        <div className="flex justify-center gap-6 flex-wrap">
-          <img src="/logos/microsoft.svg" className="h-8" alt="Microsoft" />
-          <img
-            src="/logos/ycombinator.svg"
-            className="h-8"
-            alt="Y Combinator"
-          />
-          <img src="/logos/sequoiacap.svg" className="h-8" alt="Sequoia" />
-          <img src="/logos/techstars.svg" className="h-8" alt="Techstars" />
-          <img src="/logos/googlevc.svg" className="h-8" alt="GV" />
+      <section className="px-6 sm:px-12 py-16 bg-gray-50" ref={nicheSectionRef}>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-black">
+          Featured Investor Types
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {investorTypes.map((item, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => {
+                setShowModal(true);
+              }}
+              className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all"
+            >
+              <div className="text-3xl mb-3">{item.icon}</div>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-800">
+                {item.label}
+              </h3>
+            </motion.div>
+          ))}
         </div>
-      </motion.section>
-
-
- <section className="px-6 sm:px-12 py-16 bg-gray-50" ref={nicheSectionRef}>
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-black">
-        Featured Investor Types
-      </h2>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-        {investorTypes.map((item, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            onClick={()=>{setShowModal(true)}}
-            className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all"
-          >
-            <div className="text-3xl mb-3">{item.icon}</div>
-            <h3 className="text-sm sm:text-base font-semibold text-gray-800">
-              {item.label}
-            </h3>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+      </section>
 
       {/* How it Works */}
       <motion.section
@@ -408,19 +539,19 @@ export default function Home() {
               name: "Ravi Mehta",
               title: "Founder, SaaSly",
               text: "I got in touch with 3 active SaaS investors within 48 hours of downloading the leads. This platform is a game changer.",
-              image: "/testimonials/ravi.jpg",
+              image: "/ravi.png",
             },
             {
               name: "Sara Kapoor",
               title: "CEO, FinEdge",
               text: "The investors were incredibly relevant to our space. It’s like you already knew who we wanted to talk to!",
-              image: "/testimonials/sara.jpg",
+              image: "/sara.png",
             },
             {
               name: "Arjun Desai",
               title: "Co-Founder, HealthLink",
               text: "This saved us months of cold outreach. We got personalized follow-ups and even closed one angel within a week.",
-              image: "/testimonials/arjun.jpg",
+              image: "/arjun.png",
             },
           ].map((t, i) => (
             <motion.div
