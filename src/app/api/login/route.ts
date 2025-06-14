@@ -6,8 +6,8 @@ export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
 
   // ✅ Replace these with your fixed credentials
-  const validUsername = 'muhammadMubeen';
-  const validPassword = 'capitalMubeen';
+  const validUsername = process.env.USERNAME;
+  const validPassword = process.env.PASSWORD;
 
   if (username === validUsername && password === validPassword) {
     (await cookies()).set('auth_token', 'valid_user', {
