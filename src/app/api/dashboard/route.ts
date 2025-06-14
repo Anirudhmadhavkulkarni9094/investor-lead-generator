@@ -14,6 +14,9 @@ export async function GET() {
   // Count page views
   const pageViews = await PageView.countDocuments();
   // Count form submissions (assuming InvestorLead is your form submission model)
+   const pendingRequest = await InvestorLead.find({requestCompleted : false});
+    const completedRequest = await InvestorLead.find({requestCompleted : true});
+  
   let formSubmissions = 0;
   try {
     formSubmissions = await InvestorLead.countDocuments();
@@ -26,5 +29,31 @@ export async function GET() {
     buttonClicks,
     pageViews,
     formSubmissions,
+    pendingRequest,
+    completedRequest
   });
+}
+
+
+export async function PUT(request: Request) {
+  await connect();
+  const { id } = await request.json();
+
+  if (!id) {
+    return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  }
+
+  try {
+    const updatedLead = await InvestorLead.findByIdAndUpdate(
+      id,
+      { requestCompleted: true },
+      { new: true }
+    );
+    if (!updatedLead) {
+      return NextResponse.json({ error: "Lead not found" }, { status: 404 });
+    }
+    return NextResponse.json({ success: true, updatedLead });
+  } catch (error) {
+    return NextResponse.json({ error: "Update failed" }, { status: 500 });
+  }
 }
