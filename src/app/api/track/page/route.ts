@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import PageView from '@/models/PageView';
 
-export async function POST(req: any) {
+export async function POST(req: NextRequest) {
   await dbConnect();
 
   const ip =
     req.headers.get('x-forwarded-for')?.split(',')[0] ||
-    req.ip ||
     'unknown';
 
   try {
