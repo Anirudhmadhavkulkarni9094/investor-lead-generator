@@ -48,8 +48,8 @@ export async function POST(req: NextRequest) {
     const transporter = nodemailer.createTransport({
       service: "gmail", // or "Zoho", "Outlook", etc.
       auth: {
-        user: "anirudhkulkarni9094@gmail.com", // your email
-        pass: "qdvxsmagnxxsfuos", // your app password
+        user: process.env.EMAIL_USER, // your email
+        pass: process.env.EMAIL_PASS, // your app password
       },
     });
 
