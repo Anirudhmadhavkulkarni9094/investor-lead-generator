@@ -41,18 +41,18 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const nicheSectionRef = useRef<HTMLDivElement>(null);
 
-  const [name, setName] = useState("anirudh");
-  const [email, setEmail] = useState("anirudh@gmail.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   // State for each filter group
-  const [investorType, setInvestorType] = useState<string[]>(["anirudh,anirudh"]);
-  const [geography, setGeography] = useState<string[]>(["anirudh,anirudh"]);
-  const [industry, setIndustry] = useState<string[]>(["anirudh,anirudh"]);
-  const [stage, setStage] = useState<string[]>(["anirudh,anirudh"]);
-  const [investmentSize, setInvestmentSize] = useState<string[]>(["anirudh,anirudh"]);
-  const [status, setStatus] = useState<string[]>(["anirudh,anirudh"]);
-  const [additionalInfo, setAdditionalDetails] = useState("Anirudh");
+  const [investorType, setInvestorType] = useState<string[]>([""]);
+  const [geography, setGeography] = useState<string[]>([""]);
+  const [industry, setIndustry] = useState<string[]>([""]);
+  const [stage, setStage] = useState<string[]>([""]);
+  const [investmentSize, setInvestmentSize] = useState<string[]>([""]);
+  const [status, setStatus] = useState<string[]>([""]);
+  const [additionalInfo, setAdditionalDetails] = useState("");
 
 
   const toggle =
@@ -171,89 +171,81 @@ export default function Home() {
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] text-white relative overflow-hidden"
+     <motion.section
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#3b82f6] text-white relative overflow-hidden"
+>
+  {/* Decorative blurred shapes */}
+  <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl z-0"></div>
+  <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-300/20 rounded-full blur-2xl z-0"></div>
+
+  <div className="absolute top-20 left-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+  <div className="absolute top-20 right-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+  <div className="absolute bottom-20 left-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+  <div className="absolute bottom-20 right-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+
+  {/* Glass Card */}
+  <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-3xl px-8 py-16 max-w-3xl text-center w-full">
+    <img src="/Logo.png" alt="Logo" className="h-10 mb-6 mx-auto" />
+
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-md"
+    >
+      ✨ Connect with <span className="text-cyan-300">100,000+</span>{" "}
+      Elite Startup Investors
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4 }}
+      className="text-lg mt-4 sm:mt-6 text-blue-100 max-w-xl mx-auto"
+    >
+      Skip the guesswork — get investor leads tailored to your startup’s niche, stage, and geography.
+    </motion.p>
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5 }}
+      className="mt-6 bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm text-blue-100 max-w-xl mx-auto backdrop-blur-md shadow-sm"
+    >
+      🔍 Backed by research from premium investor databases like{" "}
+      <span className="text-white font-medium">PitchBook</span>,{" "}
+      <span className="text-white font-medium">Preqin</span>, and other verified sources. Data is ethically gathered and fully compliant with platform terms.
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6 }}
+      className="flex flex-col sm:flex-row gap-4 mt-10 justify-center"
+    >
+      <button
+        onClick={() => setShowModal(true)}
+        className="relative bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-400 hover:to-cyan-500 text-white py-3 px-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
       >
-        {/* Decorative blurred shapes */}
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-blue-400/30 rounded-full blur-3xl z-0"></div>
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-300/20 rounded-full blur-2xl z-0"></div>
+        <span className="z-10">Get Your curated investor leads</span>
+        <ArrowRight size={18} className="z-10" />
+        <div className="absolute inset-0 bg-white/10 rounded-xl blur-sm opacity-50 hover:opacity-30 transition-all duration-300"></div>
+      </button>
 
-        <div className="absolute top-20 left-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
-        <div className="absolute top-20 right-20 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
-        <div className="absolute bottom-20 left-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
-        <div className="absolute bottom-20 right-60 animate-bounce bg-white/30 h-24 w-24 rounded-full shadow-2xl blur-lg"></div>
+      <button
+        onClick={handleScrollToNiches}
+        type="button"
+        className="relative bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 px-6 rounded-xl shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 flex items-center gap-2"
+      >
+        <Search size={18} /> View Investor Niches
+      </button>
+    </motion.div>
+  </div>
+</motion.section>
 
-        {/* Glass Card */}
-        <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl rounded-3xl px-8 py-16 max-w-3xl text-center w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-md"
-          >
-            ✨ Connect with <span className="text-cyan-300">100,000+</span>{" "}
-            Elite Startup Investors
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg mt-6 text-blue-100 max-w-xl mx-auto"
-          >
-            Get handpicked investor leads based on your startup’s stage, niche,
-            and region — instantly.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 mt-10 justify-center"
-          >
-            <button
-              onClick={() => setShowModal(true)}
-              className="relative bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-400 hover:to-cyan-500 text-white py-3 px-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
-            >
-              <span className="z-10">Get Your curated investor leads</span>
-              <ArrowRight size={18} className="z-10" />
-              <div className="absolute inset-0 bg-white/10 rounded-xl blur-sm opacity-50 hover:opacity-30 transition-all duration-300"></div>
-            </button>
-
-            <button
-              onClick={handleScrollToNiches}
-              type="button"
-              className="relative bg-white/10 hover:bg-white/20 border border-white/20 text-white py-3 px-6 rounded-xl shadow-md backdrop-blur-md transition-all duration-300 hover:scale-105 flex items-center gap-2"
-            >
-              <Search size={18} /> View Investor Niches
-            </button>
-          </motion.div>
-
-          {/* Testimonials */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 text-sm sm:text-base text-blue-100"
-          >
-            <div className="bg-white/10 border border-white/10 rounded-xl px-6 py-4 backdrop-blur-md shadow-inner">
-              <p>
-                💬 “Landed 2 pre-seed meetings in 48 hours!” –{" "}
-                <span className="font-medium text-white">
-                  AI Startup Founder
-                </span>
-              </p>
-              <p className="mt-2">
-                💡 “Finally, quality investors without cold emailing.” –{" "}
-                <span className="font-medium text-white">Early SaaS Team</span>
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -523,61 +515,67 @@ export default function Home() {
       </motion.section>
 
       {/* Testimonials Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
+    <motion.section
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="py-20 px-6 bg-white text-black"
+>
+  <h2 className="text-3xl font-semibold text-center mb-10">
+    What Founders Are Saying
+  </h2>
+  <div className="grid sm:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {[
+      {
+        name: "Vlad Rascanu",
+        title: "The Friendly Brokers",
+        text: "Outstanding service—fast, reliable, and truly unique. Delivered exactly what I needed with impressive speed and quality. Highly recommended!",
+        image: "/vlad.jpeg", // replace with actual image path if available
+        linkedin: "https://www.linkedin.com/in/vladrascanu/?originalSubdomain=ca",
+      },
+      {
+        name: "Jake Kelder",
+        title: "Independent Force",
+        text: "Excellent work—delivered just what I needed. Very satisfied and will definitely use this service again. Thank you!",
+        image: "/jake.jpeg", // replace with actual image path if available
+        linkedin: "https://www.linkedin.com/in/jakekelder/",
+      },
+      {
+        name: "Houston Jones",
+        title: "Shadow Magic Studios",
+        text: "Dunno how many more times I need to say this haha. This is my 3rd order with Mo, with a 4th one in queue. Obviously he's great to work with.",
+        image: "/houstan.jpeg", // replace with actual image path if available
+        linkedin: "https://www.linkedin.com/in/houstonjones3/",
+      },
+    ].map((t, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ delay: i * 0.2 }}
         viewport={{ once: true }}
-        className="py-20 px-6 bg-white text-black"
+        className="bg-gray-100 p-6 rounded-xl shadow-md"
       >
-        <h2 className="text-3xl font-semibold text-center mb-10">
-          What Founders Are Saying
-        </h2>
-        <div className="grid sm:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            {
-              name: "Ravi Mehta",
-              title: "Founder, SaaSly",
-              text: "I got in touch with 3 active SaaS investors within 48 hours of downloading the leads. This platform is a game changer.",
-              image: "/ravi.png",
-            },
-            {
-              name: "Sara Kapoor",
-              title: "CEO, FinEdge",
-              text: "The investors were incredibly relevant to our space. It’s like you already knew who we wanted to talk to!",
-              image: "/sara.png",
-            },
-            {
-              name: "Arjun Desai",
-              title: "Co-Founder, HealthLink",
-              text: "This saved us months of cold outreach. We got personalized follow-ups and even closed one angel within a week.",
-              image: "/arjun.png",
-            },
-          ].map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              viewport={{ once: true }}
-              className="bg-gray-100 p-6 rounded-xl shadow-md"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-sm text-gray-600">{t.title}</p>
-                </div>
-              </div>
-              <p className="text-gray-800 italic">“{t.text}”</p>
-            </motion.div>
-          ))}
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src={t.image}
+            alt={t.name}
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <a href={t.linkedin} target="_blank" rel="noopener noreferrer">
+              <p className="font-semibold hover:underline">{t.name}</p>
+            </a>
+            <p className="text-sm text-gray-600">{t.title}</p>
+          </div>
         </div>
-      </motion.section>
+        <p className="text-gray-800 italic">“{t.text}”</p>
+      </motion.div>
+    ))}
+  </div>
+</motion.section>
+
 
       {/* Comparison Table */}
       <motion.section
